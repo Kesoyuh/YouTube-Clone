@@ -1,5 +1,5 @@
 //
-//  MenuBar.h
+//  MenuBarCell.h
 //  YouTubeClone
 //
 //  Created by Changchang on 12/2/17.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MenuBar : UIView <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface MenuBarCell : UICollectionViewCell
+
+@property (strong, nonatomic) UIImageView *imageView;
 
 @end

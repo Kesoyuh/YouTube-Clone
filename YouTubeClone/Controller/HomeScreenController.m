@@ -9,8 +9,13 @@
 #import "HomeScreenController.h"
 #import "VideoCollectionViewCell.h"
 #import "MenuBar.h"
+#import "Video.h"
 
 @interface HomeScreenController ()
+
+@property (strong, nonatomic) UIView *menuBar;
+@property (strong, nonatomic) NSArray *videos;
+
 
 @end
 
@@ -34,25 +39,29 @@
     
     [self.collectionView registerClass:[VideoCollectionViewCell class] forCellWithReuseIdentifier:@"cellID"];
     
+    self.collectionView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
+    self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0);
+    
     [self setupMenuBar];
     
 }
 
 - (void)setupMenuBar {
-    MenuBar *menubar = [[MenuBar alloc] init];
-    menubar.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addSubview:menubar];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v0]|" options:0 metrics:nil views:@{@"v0": menubar}]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v0(50)]" options:0 metrics:nil views:@{@"v0": menubar}]];
+    
+    [self.view addSubview:self.menuBar];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v0]|" options:0 metrics:nil views:@{@"v0": self.menuBar}]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v0(50)]" options:0 metrics:nil views:@{@"v0": self.menuBar}]];
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 5;
+    return self.videos.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"cellID" forIndexPath:indexPath];
+    VideoCollectionViewCell *cell = (VideoCollectionViewCell *)[self.collectionView dequeueReusableCellWithReuseIdentifier:@"cellID" forIndexPath:indexPath];
+    
+    cell.video = self.videos[indexPath.item];
     
     return cell;
                                 
@@ -65,6 +74,29 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 0;
+}
+
+- (UIView *)menuBar {
+    if (!_menuBar) {
+        _menuBar = [[MenuBar alloc] init];
+        _menuBar.translatesAutoresizingMaskIntoConstraints = NO;
+    }
+    return _menuBar;
+}
+
+- (NSArray *)videos {
+    if (!_videos) {
+        Channel *channel = [[Channel alloc] init];
+        channel.name = @"this is a channel";
+        channel.profileImageName = @"one-republic-icon";
+        
+        Video *video1 = [[Video alloc] init];
+        video1.title = @"This is a title";
+        video1.thumbnailImageName = @"one-republic";
+        video1.channel = channel;
+        _videos = @[video1];
+    }
+    return _videos;
 }
 
 

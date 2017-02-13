@@ -65,11 +65,19 @@
     
 }
 
+#pragma mark - Setter
+- (void)setVideo:(Video *)video {
+    _video = video;
+    self.titleLableView.text = video.title;
+    self.thumbnailImageView.image = [UIImage imageNamed:video.thumbnailImageName];
+    self.profileImageView.image = [UIImage imageNamed:video.channel.profileImageName];
+
+}
+
 #pragma mark - Getter
 -(UIImageView *)thumbnailImageView {
     if(!_thumbnailImageView) {
         _thumbnailImageView = [[UIImageView alloc] init];
-        _thumbnailImageView.image = [UIImage imageNamed:@"one-republic"];
         _thumbnailImageView.contentMode = UIViewContentModeScaleAspectFill;
         _thumbnailImageView.clipsToBounds = YES;
         _thumbnailImageView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -91,7 +99,7 @@
 -(UIImageView *)profileImageView {
     if(!_profileImageView) {
         _profileImageView = [[UIImageView alloc] init];
-        _profileImageView.image = [UIImage imageNamed:@"one-republic-icon"];
+//        _profileImageView.image = [UIImage imageNamed:@"one-republic-icon"];
         _profileImageView.layer.cornerRadius = 22;
         _profileImageView.layer.masksToBounds = YES;
         _profileImageView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -102,7 +110,7 @@
 -(UILabel *)titleLableView {
     if(!_titleLableView) {
         _titleLableView = [[UILabel alloc] init];
-        _titleLableView.text = @"OneRepublic - Let's Hurt Tonight";
+//        _titleLableView.text = @"OneRepublic - Let's Hurt Tonight";
         _titleLableView.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return _titleLableView;

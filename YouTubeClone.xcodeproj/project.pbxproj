@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C2A94C31E5048230099A8F5 /* MenuBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2A94C21E5048230099A8F5 /* MenuBarCell.m */; };
+		0C2A94C71E50632B0099A8F5 /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2A94C61E50632B0099A8F5 /* Video.m */; };
+		0C2A94CA1E5069230099A8F5 /* Channel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2A94C91E5069230099A8F5 /* Channel.m */; };
 		0C4E02601E4FF524007F970A /* VideoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E025F1E4FF524007F970A /* VideoCollectionViewCell.m */; };
 		0C4E02651E503156007F970A /* HomeScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E02641E503156007F970A /* HomeScreenController.m */; };
 		0C4E02681E503408007F970A /* MenuBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E02671E503408007F970A /* MenuBar.m */; };
@@ -37,6 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C2A94C11E5048230099A8F5 /* MenuBarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuBarCell.h; path = View/MenuBarCell.h; sourceTree = "<group>"; };
+		0C2A94C21E5048230099A8F5 /* MenuBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuBarCell.m; path = View/MenuBarCell.m; sourceTree = "<group>"; };
+		0C2A94C51E50632B0099A8F5 /* Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Video.h; path = Model/Video.h; sourceTree = "<group>"; };
+		0C2A94C61E50632B0099A8F5 /* Video.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Video.m; path = Model/Video.m; sourceTree = "<group>"; };
+		0C2A94C81E5069230099A8F5 /* Channel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Channel.h; path = Model/Channel.h; sourceTree = "<group>"; };
+		0C2A94C91E5069230099A8F5 /* Channel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Channel.m; path = Model/Channel.m; sourceTree = "<group>"; };
 		0C4E025E1E4FF524007F970A /* VideoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoCollectionViewCell.h; path = View/VideoCollectionViewCell.h; sourceTree = "<group>"; };
 		0C4E025F1E4FF524007F970A /* VideoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoCollectionViewCell.m; path = View/VideoCollectionViewCell.m; sourceTree = "<group>"; };
 		0C4E02631E503156007F970A /* HomeScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeScreenController.h; path = Controller/HomeScreenController.h; sourceTree = "<group>"; };
@@ -84,6 +93,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C2A94C41E5062FB0099A8F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0C2A94C51E50632B0099A8F5 /* Video.h */,
+				0C2A94C61E50632B0099A8F5 /* Video.m */,
+				0C2A94C81E5069230099A8F5 /* Channel.h */,
+				0C2A94C91E5069230099A8F5 /* Channel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		0C4E02611E50310D007F970A /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +111,8 @@
 				0C4E025F1E4FF524007F970A /* VideoCollectionViewCell.m */,
 				0C4E02661E503408007F970A /* MenuBar.h */,
 				0C4E02671E503408007F970A /* MenuBar.m */,
+				0C2A94C11E5048230099A8F5 /* MenuBarCell.h */,
+				0C2A94C21E5048230099A8F5 /* MenuBarCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -127,6 +149,7 @@
 		0CD705841E45F604001E06C6 /* YouTubeClone */ = {
 			isa = PBXGroup;
 			children = (
+				0C2A94C41E5062FB0099A8F5 /* Model */,
 				0C4E02621E50311E007F970A /* Controller */,
 				0C4E02611E50310D007F970A /* View */,
 				0CD705881E45F604001E06C6 /* AppDelegate.h */,
@@ -304,9 +327,12 @@
 			files = (
 				0CD7058A1E45F604001E06C6 /* AppDelegate.m in Sources */,
 				0C4E02681E503408007F970A /* MenuBar.m in Sources */,
+				0C2A94C31E5048230099A8F5 /* MenuBarCell.m in Sources */,
 				0C4E02601E4FF524007F970A /* VideoCollectionViewCell.m in Sources */,
 				0C4E02651E503156007F970A /* HomeScreenController.m in Sources */,
+				0C2A94CA1E5069230099A8F5 /* Channel.m in Sources */,
 				0CD705871E45F604001E06C6 /* main.m in Sources */,
+				0C2A94C71E50632B0099A8F5 /* Video.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
