@@ -10,6 +10,5 @@
 
 @interface HomeScreenController : UICollectionViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 
-
 @end
 

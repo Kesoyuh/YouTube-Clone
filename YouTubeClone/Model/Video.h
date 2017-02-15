@@ -18,5 +18,7 @@
 
 @property (strong, nonatomic) Channel *channel;
 
++ (void)fetchVideosWithCompletionHandler:(void (^)(NSArray *videos))handler;
+
 
 @end

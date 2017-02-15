@@ -21,6 +21,8 @@
 
 @implementation HomeScreenController
 
+@synthesize videos=_videos;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -43,6 +45,13 @@
     self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0);
     
     [self setupMenuBar];
+    
+    [Video fetchVideosWithCompletionHandler:^(NSArray *videos) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.videos = videos;
+        });
+        
+    }];
     
 }
 
@@ -68,7 +77,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    float height = (self.view.frame.size.width - 32) * 9.0 / 16.0 + 68;
+    float height = (self.view.frame.size.width - 32) * 9.0 / 16.0 + 88;
     return CGSizeMake(self.view.frame.size.width, height);
 }
 
@@ -86,17 +95,25 @@
 
 - (NSArray *)videos {
     if (!_videos) {
-        Channel *channel = [[Channel alloc] init];
-        channel.name = @"this is a channel";
-        channel.profileImageName = @"one-republic-icon";
-        
-        Video *video1 = [[Video alloc] init];
-        video1.title = @"This is a title";
-        video1.thumbnailImageName = @"one-republic";
-        video1.channel = channel;
-        _videos = @[video1];
+//        Channel *channel = [[Channel alloc] init];
+//        channel.name = @"this is a channel";
+//        channel.profileImageName = @"one-republic-icon";
+//        
+//        Video *video1 = [[Video alloc] init];
+//        video1.title = @"This is a title OneRepublicVEVO • 23,000,000 views • 2 months ago";
+//        video1.thumbnailImageName = @"one-republic";
+//        video1.channel = channel;
+//        video1.numberOfViews = @13435345635635;
+//        _videos = @[video1];
+        _videos = [[NSArray alloc] init];
     }
     return _videos;
+}
+
+- (void)setVideos:(NSArray *)videos {
+    _videos = videos;
+    NSLog(@"hha%@", videos);
+    [self.collectionView reloadData];
 }
 
 

@@ -20,6 +20,7 @@
 		0CD705951E45F604001E06C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD705931E45F604001E06C6 /* LaunchScreen.storyboard */; };
 		0CD705A01E45F604001E06C6 /* YouTubeCloneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7059F1E45F604001E06C6 /* YouTubeCloneTests.m */; };
 		0CD705AB1E45F604001E06C6 /* YouTubeCloneUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD705AA1E45F604001E06C6 /* YouTubeCloneUITests.m */; };
+		BF2E4E501E5419A40035834F /* UIImageView+LoadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2E4E4F1E5419A40035834F /* UIImageView+LoadImage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,8 @@
 		0CD705A61E45F604001E06C6 /* YouTubeCloneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YouTubeCloneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD705AA1E45F604001E06C6 /* YouTubeCloneUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouTubeCloneUITests.m; sourceTree = "<group>"; };
 		0CD705AC1E45F605001E06C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF2E4E4E1E5419A40035834F /* UIImageView+LoadImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+LoadImage.h"; path = "Helper/UIImageView+LoadImage.h"; sourceTree = "<group>"; };
+		BF2E4E4F1E5419A40035834F /* UIImageView+LoadImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+LoadImage.m"; path = "Helper/UIImageView+LoadImage.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +152,7 @@
 		0CD705841E45F604001E06C6 /* YouTubeClone */ = {
 			isa = PBXGroup;
 			children = (
+				BF2E4E4D1E5419790035834F /* Helper */,
 				0C2A94C41E5062FB0099A8F5 /* Model */,
 				0C4E02621E50311E007F970A /* Controller */,
 				0C4E02611E50310D007F970A /* View */,
@@ -187,6 +191,15 @@
 				0CD705AC1E45F605001E06C6 /* Info.plist */,
 			);
 			path = YouTubeCloneUITests;
+			sourceTree = "<group>";
+		};
+		BF2E4E4D1E5419790035834F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				BF2E4E4E1E5419A40035834F /* UIImageView+LoadImage.h */,
+				BF2E4E4F1E5419A40035834F /* UIImageView+LoadImage.m */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,6 +342,7 @@
 				0C4E02681E503408007F970A /* MenuBar.m in Sources */,
 				0C2A94C31E5048230099A8F5 /* MenuBarCell.m in Sources */,
 				0C4E02601E4FF524007F970A /* VideoCollectionViewCell.m in Sources */,
+				BF2E4E501E5419A40035834F /* UIImageView+LoadImage.m in Sources */,
 				0C4E02651E503156007F970A /* HomeScreenController.m in Sources */,
 				0C2A94CA1E5069230099A8F5 /* Channel.m in Sources */,
 				0CD705871E45F604001E06C6 /* main.m in Sources */,
