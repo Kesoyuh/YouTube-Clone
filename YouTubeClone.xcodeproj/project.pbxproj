@@ -21,6 +21,10 @@
 		0CD705A01E45F604001E06C6 /* YouTubeCloneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7059F1E45F604001E06C6 /* YouTubeCloneTests.m */; };
 		0CD705AB1E45F604001E06C6 /* YouTubeCloneUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD705AA1E45F604001E06C6 /* YouTubeCloneUITests.m */; };
 		BF2E4E501E5419A40035834F /* UIImageView+LoadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2E4E4F1E5419A40035834F /* UIImageView+LoadImage.m */; };
+		BF2F13481E551EA80057F8FF /* CustomImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F13471E551EA80057F8FF /* CustomImageView.m */; };
+		BF2F134B1E55483E0057F8FF /* SettingLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F134A1E55483E0057F8FF /* SettingLauncher.m */; };
+		BF2F134E1E5564420057F8FF /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F134D1E5564420057F8FF /* SettingCell.m */; };
+		BF2F13511E5570D00057F8FF /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F13501E5570D00057F8FF /* Setting.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +73,14 @@
 		0CD705AC1E45F605001E06C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF2E4E4E1E5419A40035834F /* UIImageView+LoadImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+LoadImage.h"; path = "Helper/UIImageView+LoadImage.h"; sourceTree = "<group>"; };
 		BF2E4E4F1E5419A40035834F /* UIImageView+LoadImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+LoadImage.m"; path = "Helper/UIImageView+LoadImage.m"; sourceTree = "<group>"; };
+		BF2F13461E551EA80057F8FF /* CustomImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomImageView.h; path = View/CustomImageView.h; sourceTree = "<group>"; };
+		BF2F13471E551EA80057F8FF /* CustomImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomImageView.m; path = View/CustomImageView.m; sourceTree = "<group>"; };
+		BF2F13491E55483E0057F8FF /* SettingLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingLauncher.h; path = Controller/SettingLauncher.h; sourceTree = "<group>"; };
+		BF2F134A1E55483E0057F8FF /* SettingLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingLauncher.m; path = Controller/SettingLauncher.m; sourceTree = "<group>"; };
+		BF2F134C1E5564420057F8FF /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingCell.h; path = View/SettingCell.h; sourceTree = "<group>"; };
+		BF2F134D1E5564420057F8FF /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingCell.m; path = View/SettingCell.m; sourceTree = "<group>"; };
+		BF2F134F1E5570D00057F8FF /* Setting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Setting.h; path = Model/Setting.h; sourceTree = "<group>"; };
+		BF2F13501E5570D00057F8FF /* Setting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Setting.m; path = Model/Setting.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +115,8 @@
 				0C2A94C61E50632B0099A8F5 /* Video.m */,
 				0C2A94C81E5069230099A8F5 /* Channel.h */,
 				0C2A94C91E5069230099A8F5 /* Channel.m */,
+				BF2F134F1E5570D00057F8FF /* Setting.h */,
+				BF2F13501E5570D00057F8FF /* Setting.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -116,6 +130,10 @@
 				0C4E02671E503408007F970A /* MenuBar.m */,
 				0C2A94C11E5048230099A8F5 /* MenuBarCell.h */,
 				0C2A94C21E5048230099A8F5 /* MenuBarCell.m */,
+				BF2F13461E551EA80057F8FF /* CustomImageView.h */,
+				BF2F13471E551EA80057F8FF /* CustomImageView.m */,
+				BF2F134C1E5564420057F8FF /* SettingCell.h */,
+				BF2F134D1E5564420057F8FF /* SettingCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -125,6 +143,8 @@
 			children = (
 				0C4E02631E503156007F970A /* HomeScreenController.h */,
 				0C4E02641E503156007F970A /* HomeScreenController.m */,
+				BF2F13491E55483E0057F8FF /* SettingLauncher.h */,
+				BF2F134A1E55483E0057F8FF /* SettingLauncher.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -338,13 +358,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF2F13511E5570D00057F8FF /* Setting.m in Sources */,
 				0CD7058A1E45F604001E06C6 /* AppDelegate.m in Sources */,
 				0C4E02681E503408007F970A /* MenuBar.m in Sources */,
+				BF2F134E1E5564420057F8FF /* SettingCell.m in Sources */,
 				0C2A94C31E5048230099A8F5 /* MenuBarCell.m in Sources */,
 				0C4E02601E4FF524007F970A /* VideoCollectionViewCell.m in Sources */,
 				BF2E4E501E5419A40035834F /* UIImageView+LoadImage.m in Sources */,
+				BF2F13481E551EA80057F8FF /* CustomImageView.m in Sources */,
 				0C4E02651E503156007F970A /* HomeScreenController.m in Sources */,
 				0C2A94CA1E5069230099A8F5 /* Channel.m in Sources */,
+				BF2F134B1E55483E0057F8FF /* SettingLauncher.m in Sources */,
 				0CD705871E45F604001E06C6 /* main.m in Sources */,
 				0C2A94C71E50632B0099A8F5 /* Video.m in Sources */,
 			);

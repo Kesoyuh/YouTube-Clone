@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) UIView *menuBar;
 @property (strong, nonatomic) NSArray *videos;
-
+@property (strong, nonatomic) SettingLauncher *settingLauncher;
 
 @end
 
@@ -36,7 +36,6 @@
     titleLable.text = @"Home";
     self.navigationItem.titleView = titleLable;
     
-    
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
     [self.collectionView registerClass:[VideoCollectionViewCell class] forCellWithReuseIdentifier:@"cellID"];
@@ -45,6 +44,7 @@
     self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0);
     
     [self setupMenuBar];
+    [self setupNavBarButton];
     
     [Video fetchVideosWithCompletionHandler:^(NSArray *videos) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -53,6 +53,8 @@
         
     }];
     
+    self.settingLauncher = [[SettingLauncher alloc] init];
+    
 }
 
 - (void)setupMenuBar {
@@ -60,6 +62,24 @@
     [self.view addSubview:self.menuBar];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v0]|" options:0 metrics:nil views:@{@"v0": self.menuBar}]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v0(50)]" options:0 metrics:nil views:@{@"v0": self.menuBar}]];
+}
+
+- (void)setupNavBarButton {
+    UIImage *searchImage = [[UIImage imageNamed:@"search"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIImage *moreImage = [[UIImage imageNamed:@"more"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIBarButtonItem *searchBarButtonItem = [[UIBarButtonItem alloc] initWithImage:searchImage style:UIBarButtonItemStylePlain target:self action:@selector(handleSearch)];
+    UIBarButtonItem *moreBarButtonItem = [[UIBarButtonItem alloc] initWithImage:moreImage style:UIBarButtonItemStylePlain target:self action:@selector(handleMore)];
+    self.navigationItem.rightBarButtonItems = @[moreBarButtonItem, searchBarButtonItem];
+}
+
+- (void)handleSearch {
+    NSLog(@"%@", @"touching search button");
+}
+
+- (void)handleMore {
+    
+    [self.settingLauncher showSettingMenu];
+   
 }
 
 
@@ -73,7 +93,6 @@
     cell.video = self.videos[indexPath.item];
     
     return cell;
-                                
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -95,16 +114,6 @@
 
 - (NSArray *)videos {
     if (!_videos) {
-//        Channel *channel = [[Channel alloc] init];
-//        channel.name = @"this is a channel";
-//        channel.profileImageName = @"one-republic-icon";
-//        
-//        Video *video1 = [[Video alloc] init];
-//        video1.title = @"This is a title OneRepublicVEVO • 23,000,000 views • 2 months ago";
-//        video1.thumbnailImageName = @"one-republic";
-//        video1.channel = channel;
-//        video1.numberOfViews = @13435345635635;
-//        _videos = @[video1];
         _videos = [[NSArray alloc] init];
     }
     return _videos;
@@ -112,7 +121,6 @@
 
 - (void)setVideos:(NSArray *)videos {
     _videos = videos;
-    NSLog(@"hha%@", videos);
     [self.collectionView reloadData];
 }
 

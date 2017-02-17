@@ -10,9 +10,9 @@
 
 @interface VideoCollectionViewCell ()
 
-@property (strong, nonatomic) UIImageView *thumbnailImageView;
+@property (strong, nonatomic) CustomImageView *thumbnailImageView;
 @property (strong, nonatomic) UIView *separatorView;
-@property (strong, nonatomic) UIImageView *profileImageView;
+@property (strong, nonatomic) CustomImageView *profileImageView;
 @property (strong, nonatomic) UILabel *titleLableView;
 @property (strong, nonatomic) UITextView *subtitleTextView;
 
@@ -88,8 +88,6 @@
     [self.thumbnailImageView loadImageWithURLString:self.video.thumbnailImageName];
     [self.profileImageView loadImageWithURLString:self.video.channel.profileImageName];
     
-    self.profileImageView.image = [UIImage imageNamed:video.channel.profileImageName];
-    
     //setup subtitle
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -98,9 +96,9 @@
 }
 
 #pragma mark - Getter
--(UIImageView *)thumbnailImageView {
+- (CustomImageView *)thumbnailImageView {
     if(!_thumbnailImageView) {
-        _thumbnailImageView = [[UIImageView alloc] init];
+        _thumbnailImageView = [[CustomImageView alloc] init];
         _thumbnailImageView.contentMode = UIViewContentModeScaleAspectFill;
         _thumbnailImageView.clipsToBounds = YES;
         _thumbnailImageView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -109,7 +107,7 @@
     return _thumbnailImageView;
 }
 
--(UIView *)separatorView {
+- (UIView *)separatorView {
     if(!_separatorView) {
         _separatorView = [[UIView alloc] init];
         _separatorView.backgroundColor = [UIColor colorWithRed:230.0/255.0 green:230.0/255.0 blue:230.0/255.0 alpha:1];
@@ -119,9 +117,9 @@
     return _separatorView;
 }
 
--(UIImageView *)profileImageView {
+- (CustomImageView *)profileImageView {
     if(!_profileImageView) {
-        _profileImageView = [[UIImageView alloc] init];
+        _profileImageView = [[CustomImageView alloc] init];
         _profileImageView.layer.cornerRadius = 22;
         _profileImageView.layer.masksToBounds = YES;
         _profileImageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -130,7 +128,7 @@
     return _profileImageView;
 }
 
--(UILabel *)titleLableView {
+- (UILabel *)titleLableView {
     if(!_titleLableView) {
         _titleLableView = [[UILabel alloc] init];
         _titleLableView.numberOfLines = 2;
@@ -139,7 +137,7 @@
     return _titleLableView;
 }
 
--(UITextView *)subtitleTextView {
+- (UITextView *)subtitleTextView {
     if(!_subtitleTextView) {
         _subtitleTextView = [[UITextView alloc] init];
         _subtitleTextView.translatesAutoresizingMaskIntoConstraints = NO;

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIImageView+LoadImage.h"
+#import "CustomImageView.h"
 #import "Video.h"
 
 @interface VideoCollectionViewCell : UICollectionViewCell

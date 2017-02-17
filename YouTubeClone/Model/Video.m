@@ -38,9 +38,6 @@
             [videos addObject:video];
         }
         handler(videos);
-        
-        NSLog(@"%@", videos);
-
     }];
     [task resume];
 }

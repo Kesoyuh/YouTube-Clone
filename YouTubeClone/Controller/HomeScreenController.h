@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SettingLauncher.h"
 
 @interface HomeScreenController : UICollectionViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 
