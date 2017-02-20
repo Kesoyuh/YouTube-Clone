@@ -20,7 +20,6 @@
 		0CD705951E45F604001E06C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD705931E45F604001E06C6 /* LaunchScreen.storyboard */; };
 		0CD705A01E45F604001E06C6 /* YouTubeCloneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7059F1E45F604001E06C6 /* YouTubeCloneTests.m */; };
 		0CD705AB1E45F604001E06C6 /* YouTubeCloneUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD705AA1E45F604001E06C6 /* YouTubeCloneUITests.m */; };
-		BF2E4E501E5419A40035834F /* UIImageView+LoadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2E4E4F1E5419A40035834F /* UIImageView+LoadImage.m */; };
 		BF2F13481E551EA80057F8FF /* CustomImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F13471E551EA80057F8FF /* CustomImageView.m */; };
 		BF2F134B1E55483E0057F8FF /* SettingLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F134A1E55483E0057F8FF /* SettingLauncher.m */; };
 		BF2F134E1E5564420057F8FF /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F134D1E5564420057F8FF /* SettingCell.m */; };
@@ -71,8 +70,6 @@
 		0CD705A61E45F604001E06C6 /* YouTubeCloneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YouTubeCloneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD705AA1E45F604001E06C6 /* YouTubeCloneUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouTubeCloneUITests.m; sourceTree = "<group>"; };
 		0CD705AC1E45F605001E06C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF2E4E4E1E5419A40035834F /* UIImageView+LoadImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+LoadImage.h"; path = "Helper/UIImageView+LoadImage.h"; sourceTree = "<group>"; };
-		BF2E4E4F1E5419A40035834F /* UIImageView+LoadImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+LoadImage.m"; path = "Helper/UIImageView+LoadImage.m"; sourceTree = "<group>"; };
 		BF2F13461E551EA80057F8FF /* CustomImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomImageView.h; path = View/CustomImageView.h; sourceTree = "<group>"; };
 		BF2F13471E551EA80057F8FF /* CustomImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomImageView.m; path = View/CustomImageView.m; sourceTree = "<group>"; };
 		BF2F13491E55483E0057F8FF /* SettingLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingLauncher.h; path = Controller/SettingLauncher.h; sourceTree = "<group>"; };
@@ -216,8 +213,6 @@
 		BF2E4E4D1E5419790035834F /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				BF2E4E4E1E5419A40035834F /* UIImageView+LoadImage.h */,
-				BF2E4E4F1E5419A40035834F /* UIImageView+LoadImage.m */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -364,7 +359,6 @@
 				BF2F134E1E5564420057F8FF /* SettingCell.m in Sources */,
 				0C2A94C31E5048230099A8F5 /* MenuBarCell.m in Sources */,
 				0C4E02601E4FF524007F970A /* VideoCollectionViewCell.m in Sources */,
-				BF2E4E501E5419A40035834F /* UIImageView+LoadImage.m in Sources */,
 				BF2F13481E551EA80057F8FF /* CustomImageView.m in Sources */,
 				0C4E02651E503156007F970A /* HomeScreenController.m in Sources */,
 				0C2A94CA1E5069230099A8F5 /* Channel.m in Sources */,

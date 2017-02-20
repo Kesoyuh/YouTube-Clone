@@ -60,7 +60,16 @@
     _setting = setting;
     self.nameLable.text = _setting.name;
     self.iconImageView.image = [[UIImage imageNamed:_setting.imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.iconImageView.tintColor = [UIColor colorWithWhite:0.3 alpha:1];
+    self.iconImageView.tintColor = [UIColor darkGrayColor];
+}
+
+//Highlight the menu when selected.
+- (void)setHighlighted:(BOOL)highlighted {
+    [super setHighlighted:highlighted];
+    
+    self.backgroundColor = highlighted ? [UIColor darkGrayColor] : [UIColor whiteColor];
+    self.nameLable.textColor = highlighted ? [UIColor whiteColor] : [UIColor blackColor];
+    self.iconImageView.tintColor = highlighted ? [UIColor whiteColor] : [UIColor darkGrayColor];
 }
 
 @end

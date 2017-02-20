@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "SettingCell.h"
 
+@class HomeScreenController;
 @interface SettingLauncher : NSObject <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+
+@property (strong, nonatomic) HomeScreenController *homeScreenController;
 
 - (void)showSettingMenu;
 

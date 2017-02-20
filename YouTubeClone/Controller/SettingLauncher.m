@@ -7,6 +7,7 @@
 //
 
 #import "SettingLauncher.h"
+#import "HomeScreenController.h"
 
 @interface SettingLauncher ()
 
@@ -17,6 +18,7 @@
 @end
 
 @implementation SettingLauncher
+
 
 - (instancetype)init {
     self = [super init];
@@ -55,16 +57,19 @@
 
     } completion:nil];
 
-    
 }
 
 - (void)handleDismiss {
+    [self handleDismissWithCompletionHandler:nil];
+}
+
+- (void)handleDismissWithCompletionHandler:(nullable void (^)(BOOL finished)) handler {
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     
     [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:1 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.blackBackGroundView.alpha = 0;
         self.collectionView.frame = CGRectMake(0, window.frame.size.height, self.collectionView.frame.size.width, self.collectionView.frame.size.height);
-    } completion:nil];
+    } completion:handler];
 
 }
 
@@ -86,6 +91,15 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 0;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self handleDismissWithCompletionHandler:^(BOOL finished) {
+        Setting *setting = self.settings[indexPath.item];
+        if (![setting.name isEqual:@"Cancel"]) {
+            [self.homeScreenController showControllerForSetting:setting];
+        }
+    }];
 }
 
 #pragma mark - Getter

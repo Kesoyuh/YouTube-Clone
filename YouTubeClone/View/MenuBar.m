@@ -13,10 +13,13 @@
 
 @property (strong, nonatomic) UICollectionView *collectionView;
 @property (strong, nonatomic) NSArray *imageNames;
+@property (strong, nonatomic) UIView *horizontalBar;
 
 @end
 
-@implementation MenuBar
+@implementation MenuBar {
+    NSLayoutConstraint *horizontalBarLeftAnchorConstraint;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -33,21 +36,23 @@
         
         NSIndexPath *selectedIndexPath = [NSIndexPath indexPathForItem:0 inSection:0];
         [self.collectionView selectItemAtIndexPath:selectedIndexPath animated:NO  scrollPosition:UICollectionViewScrollPositionNone];
+        
+        [self setupHorizontalBar];
     }
     return self;
 }
 
-- (UICollectionView *)collectionView {
-    if (!_collectionView) {
-        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-        _collectionView.backgroundColor = [UIColor colorWithRed:230.0/255.0 green:32.0/255.0 blue:31.0/255.0 alpha:1];
-        _collectionView.translatesAutoresizingMaskIntoConstraints = NO;
-        _collectionView.delegate = self;
-        _collectionView.dataSource = self;
-    }
-    return _collectionView;
+- (void)setupHorizontalBar {
+    
+    [self addSubview:self.horizontalBar];
+    horizontalBarLeftAnchorConstraint = [self.horizontalBar.leftAnchor constraintEqualToAnchor:self.leftAnchor];
+    horizontalBarLeftAnchorConstraint.active = YES;
+    [self.horizontalBar.bottomAnchor constraintEqualToAnchor:self.bottomAnchor].active = YES;
+    [self.horizontalBar.widthAnchor constraintEqualToAnchor:self.widthAnchor multiplier:0.25].active = YES;
+    [self.horizontalBar.heightAnchor constraintEqualToConstant:5].active = YES;
 }
+
+#pragma mark - Datasources and delegates
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return 4;
@@ -69,5 +74,36 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
     return 0;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat x = indexPath.item * self.frame.size.width / 4;
+    horizontalBarLeftAnchorConstraint.constant = x;
+    
+    [UIView animateWithDuration:0.75 delay:0 usingSpringWithDamping:1 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [self layoutIfNeeded];
+    } completion:nil];
+}
+
+#pragma mark - Getters
+- (UICollectionView *)collectionView {
+    if (!_collectionView) {
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+        _collectionView.backgroundColor = [UIColor colorWithRed:230.0/255.0 green:32.0/255.0 blue:31.0/255.0 alpha:1];
+        _collectionView.translatesAutoresizingMaskIntoConstraints = NO;
+        _collectionView.delegate = self;
+        _collectionView.dataSource = self;
+    }
+    return _collectionView;
+}
+
+- (UIView *)horizontalBar {
+    if (!_horizontalBar) {
+        _horizontalBar = [[UIView alloc] init];
+        _horizontalBar.backgroundColor = [UIColor colorWithWhite:0.97 alpha:1];
+        _horizontalBar.translatesAutoresizingMaskIntoConstraints = NO;
+    }
+    return _horizontalBar;
 }
 @end

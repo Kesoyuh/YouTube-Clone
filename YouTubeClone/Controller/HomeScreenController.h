@@ -11,5 +11,7 @@
 
 @interface HomeScreenController : UICollectionViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 
+- (void)showControllerForSetting:(Setting *)setting;
+
 @end
 

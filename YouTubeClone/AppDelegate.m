@@ -25,7 +25,7 @@
     HomeScreenController *homeScreenController = [[HomeScreenController alloc]initWithCollectionViewLayout:layout];
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:homeScreenController];
     
-    [UINavigationBar appearance].barTintColor = [UIColor colorWithRed:230.0/255.0 green:32.0/255.0 blue:31.0/255.0 alpha:1];
+//    [UINavigationBar appearance].barTintColor = [UIColor colorWithRed:230.0/255.0 green:32.0/255.0 blue:31.0/255.0 alpha:1];
     application.statusBarStyle = UIStatusBarStyleLightContent;
     
     //get rid of black shadow under navbar

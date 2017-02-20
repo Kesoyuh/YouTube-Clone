@@ -26,14 +26,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:230.0/255.0 green:32.0/255.0 blue:31.0/255.0 alpha:1];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:230.0/255.0 green:32.0/255.0 blue:31.0/255.0 alpha:1];
     self.navigationController.navigationBar.translucent = NO;
     
     UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 32, self.view.frame.size.width)];
     
     titleLable.textColor = [UIColor whiteColor];
     titleLable.font = [UIFont systemFontOfSize:20];
-    titleLable.text = @"Home";
+    titleLable.text = @" Home";
     self.navigationItem.titleView = titleLable;
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
@@ -49,20 +49,31 @@
     [Video fetchVideosWithCompletionHandler:^(NSArray *videos) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.videos = videos;
+            [self.collectionView reloadData];
         });
         
     }];
     
-    self.settingLauncher = [[SettingLauncher alloc] init];
-    
 }
 
 - (void)setupMenuBar {
+    self.navigationController.hidesBarsOnSwipe = YES;
+
+    UIView *redView = [[UIView alloc] init];
+    redView.backgroundColor = [UIColor colorWithRed:230.0/255.0 green:32.0/255.0 blue:31.0/255.0 alpha:1];
+    redView.translatesAutoresizingMaskIntoConstraints = NO;
     
+    [self.view addSubview:redView];
     [self.view addSubview:self.menuBar];
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v0]|" options:0 metrics:nil views:@{@"v0": redView}]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[v0(50)]" options:0 metrics:nil views:@{@"v0": redView}]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v0]|" options:0 metrics:nil views:@{@"v0": self.menuBar}]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v0(50)]" options:0 metrics:nil views:@{@"v0": self.menuBar}]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[v0(50)]" options:0 metrics:nil views:@{@"v0": self.menuBar}]];
+    [self.menuBar.topAnchor constraintEqualToAnchor:self.topLayoutGuide.bottomAnchor].active = YES;
 }
+
+
 
 - (void)setupNavBarButton {
     UIImage *searchImage = [[UIImage imageNamed:@"search"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -79,7 +90,16 @@
 - (void)handleMore {
     
     [self.settingLauncher showSettingMenu];
-   
+    
+}
+
+- (void)showControllerForSetting:(Setting *)setting {
+    UIViewController *settingViewController = [UIViewController new];
+    settingViewController.navigationItem.title = setting.name;
+    settingViewController.view.backgroundColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    [self.navigationController pushViewController:settingViewController animated:true];
 }
 
 
@@ -104,6 +124,8 @@
     return 0;
 }
 
+#pragma mark - Getter
+
 - (UIView *)menuBar {
     if (!_menuBar) {
         _menuBar = [[MenuBar alloc] init];
@@ -119,10 +141,14 @@
     return _videos;
 }
 
-- (void)setVideos:(NSArray *)videos {
-    _videos = videos;
-    [self.collectionView reloadData];
+- (SettingLauncher *)settingLauncher {
+    _settingLauncher = [[SettingLauncher alloc] init];
+    _settingLauncher.homeScreenController = self;
+    return _settingLauncher;
 }
+
+#pragma mark - Setter
+
 
 
 @end
