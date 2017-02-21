@@ -10,17 +10,23 @@
 
 @implementation Video
 
-+ (void)fetchVideosWithCompletionHandler:(void (^)(NSArray *videos))handler {
++ (void)fetchVideosWithURL:(NSString *)urlString completionHandler:(void (^)(NSArray *videos))handler {
     
     NSMutableArray *videos = [[NSMutableArray alloc] init];
     
-    NSURL *url = [[NSURL alloc] initWithString:@"https://s3-us-west-2.amazonaws.com/youtubeassets/home.json"];
+    NSURL *url = [[NSURL alloc] initWithString:urlString];
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
             NSLog(@"%@", error);
         }
-        
-        NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+        NSArray *json = [NSArray new];
+        @try {
+             json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+        } @catch (NSException *exception) {
+            NSLog(@"%@", @"---parse json exception---");
+            NSLog(@"%@", exception);
+            NSLog(@"%@", @"--------------------------");
+        }
         
         for (NSDictionary *dictionary in json) {
             Video *video = [[Video alloc] init];

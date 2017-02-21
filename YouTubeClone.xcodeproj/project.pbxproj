@@ -24,6 +24,9 @@
 		BF2F134B1E55483E0057F8FF /* SettingLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F134A1E55483E0057F8FF /* SettingLauncher.m */; };
 		BF2F134E1E5564420057F8FF /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F134D1E5564420057F8FF /* SettingCell.m */; };
 		BF2F13511E5570D00057F8FF /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F13501E5570D00057F8FF /* Setting.m */; };
+		BF4248A11E5BC8750016D8E9 /* FeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4248A01E5BC8750016D8E9 /* FeedCell.m */; };
+		BF4248A61E5BEC200016D8E9 /* TrendingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4248A51E5BEC200016D8E9 /* TrendingCell.m */; };
+		BF4248A91E5BF8400016D8E9 /* SubscriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4248A81E5BF8400016D8E9 /* SubscriptionCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +81,12 @@
 		BF2F134D1E5564420057F8FF /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingCell.m; path = View/SettingCell.m; sourceTree = "<group>"; };
 		BF2F134F1E5570D00057F8FF /* Setting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Setting.h; path = Model/Setting.h; sourceTree = "<group>"; };
 		BF2F13501E5570D00057F8FF /* Setting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Setting.m; path = Model/Setting.m; sourceTree = "<group>"; };
+		BF42489F1E5BC8750016D8E9 /* FeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedCell.h; path = View/FeedCell.h; sourceTree = "<group>"; };
+		BF4248A01E5BC8750016D8E9 /* FeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedCell.m; path = View/FeedCell.m; sourceTree = "<group>"; };
+		BF4248A41E5BEC200016D8E9 /* TrendingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrendingCell.h; path = View/TrendingCell.h; sourceTree = "<group>"; };
+		BF4248A51E5BEC200016D8E9 /* TrendingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrendingCell.m; path = View/TrendingCell.m; sourceTree = "<group>"; };
+		BF4248A71E5BF8400016D8E9 /* SubscriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubscriptionCell.h; path = View/SubscriptionCell.h; sourceTree = "<group>"; };
+		BF4248A81E5BF8400016D8E9 /* SubscriptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubscriptionCell.m; path = View/SubscriptionCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +140,12 @@
 				BF2F13471E551EA80057F8FF /* CustomImageView.m */,
 				BF2F134C1E5564420057F8FF /* SettingCell.h */,
 				BF2F134D1E5564420057F8FF /* SettingCell.m */,
+				BF42489F1E5BC8750016D8E9 /* FeedCell.h */,
+				BF4248A01E5BC8750016D8E9 /* FeedCell.m */,
+				BF4248A41E5BEC200016D8E9 /* TrendingCell.h */,
+				BF4248A51E5BEC200016D8E9 /* TrendingCell.m */,
+				BF4248A71E5BF8400016D8E9 /* SubscriptionCell.h */,
+				BF4248A81E5BF8400016D8E9 /* SubscriptionCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -353,6 +368,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF4248A61E5BEC200016D8E9 /* TrendingCell.m in Sources */,
+				BF4248A11E5BC8750016D8E9 /* FeedCell.m in Sources */,
 				BF2F13511E5570D00057F8FF /* Setting.m in Sources */,
 				0CD7058A1E45F604001E06C6 /* AppDelegate.m in Sources */,
 				0C4E02681E503408007F970A /* MenuBar.m in Sources */,
@@ -364,6 +381,7 @@
 				0C2A94CA1E5069230099A8F5 /* Channel.m in Sources */,
 				BF2F134B1E55483E0057F8FF /* SettingLauncher.m in Sources */,
 				0CD705871E45F604001E06C6 /* main.m in Sources */,
+				BF4248A91E5BF8400016D8E9 /* SubscriptionCell.m in Sources */,
 				0C2A94C71E50632B0099A8F5 /* Video.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

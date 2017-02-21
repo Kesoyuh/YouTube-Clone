@@ -76,12 +76,12 @@
     self.titleLableView.text = video.title;
     CGRect estimateRect = [video.title boundingRectWithSize:CGSizeMake(self.frame.size.width - 16 - 44 -8 -16, 1000)
                               options:NSStringDrawingUsesLineFragmentOrigin
-                           attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]}
+                           attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:17]}
                               context:nil];
-    if (estimateRect.size.height > 20) {
+    if (estimateRect.size.height > 21) {
         titleLabelHeightConstraint.constant = 44;
     } else {
-        titleLabelHeightConstraint.constant = 20;
+        titleLabelHeightConstraint.constant = 22;
     }
     
     //setup thumbnailImage and profileImage
@@ -131,7 +131,9 @@
 - (UILabel *)titleLableView {
     if(!_titleLableView) {
         _titleLableView = [[UILabel alloc] init];
-        _titleLableView.numberOfLines = 2;
+        _titleLableView.numberOfLines = 0;
+        _titleLableView.font = [UIFont systemFontOfSize:17];
+//        _titleLableView.lineBreakMode = NSLineBreakByWordWrapping;
         _titleLableView.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return _titleLableView;

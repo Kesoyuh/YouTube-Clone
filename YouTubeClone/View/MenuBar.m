@@ -8,18 +8,16 @@
 
 #import "MenuBar.h"
 #import "MenuBarCell.h"
+#import "HomeScreenController.h"
 
 @interface MenuBar ()
 
-@property (strong, nonatomic) UICollectionView *collectionView;
 @property (strong, nonatomic) NSArray *imageNames;
 @property (strong, nonatomic) UIView *horizontalBar;
 
 @end
 
-@implementation MenuBar {
-    NSLayoutConstraint *horizontalBarLeftAnchorConstraint;
-}
+@implementation MenuBar
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -45,8 +43,8 @@
 - (void)setupHorizontalBar {
     
     [self addSubview:self.horizontalBar];
-    horizontalBarLeftAnchorConstraint = [self.horizontalBar.leftAnchor constraintEqualToAnchor:self.leftAnchor];
-    horizontalBarLeftAnchorConstraint.active = YES;
+    self.horizontalBarLeftAnchorConstraint = [self.horizontalBar.leftAnchor constraintEqualToAnchor:self.leftAnchor];
+    self.horizontalBarLeftAnchorConstraint.active = YES;
     [self.horizontalBar.bottomAnchor constraintEqualToAnchor:self.bottomAnchor].active = YES;
     [self.horizontalBar.widthAnchor constraintEqualToAnchor:self.widthAnchor multiplier:0.25].active = YES;
     [self.horizontalBar.heightAnchor constraintEqualToConstant:5].active = YES;
@@ -77,12 +75,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat x = indexPath.item * self.frame.size.width / 4;
-    horizontalBarLeftAnchorConstraint.constant = x;
-    
-    [UIView animateWithDuration:0.75 delay:0 usingSpringWithDamping:1 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        [self layoutIfNeeded];
-    } completion:nil];
+    [self.homeScreenController scrollToMenuIndex:indexPath.item];
 }
 
 #pragma mark - Getters

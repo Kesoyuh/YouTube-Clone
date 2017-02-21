@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class HomeScreenController;
 @interface MenuBar : UIView <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+
+@property (strong, nonatomic) UICollectionView *collectionView;
+@property (strong, nonatomic) HomeScreenController *homeScreenController;
+@property (strong, nonatomic) NSLayoutConstraint *horizontalBarLeftAnchorConstraint;
 
 @end

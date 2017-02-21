@@ -7,21 +7,21 @@
 //
 
 #import "HomeScreenController.h"
-#import "VideoCollectionViewCell.h"
 #import "MenuBar.h"
-#import "Video.h"
+#import "FeedCell.h"
+#import "TrendingCell.h"
+#import "SubscriptionCell.h"
 
 @interface HomeScreenController ()
 
-@property (strong, nonatomic) UIView *menuBar;
-@property (strong, nonatomic) NSArray *videos;
+@property (strong, nonatomic) MenuBar *menuBar;
 @property (strong, nonatomic) SettingLauncher *settingLauncher;
+@property (strong, nonatomic) NSArray *titles;
 
 @end
 
 @implementation HomeScreenController
 
-@synthesize videos=_videos;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,29 +36,30 @@
     titleLable.text = @" Home";
     self.navigationItem.titleView = titleLable;
     
-    self.collectionView.backgroundColor = [UIColor whiteColor];
     
-    [self.collectionView registerClass:[VideoCollectionViewCell class] forCellWithReuseIdentifier:@"cellID"];
-    
-    self.collectionView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
-    self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0);
-    
+    [self setupCollectionView];
     [self setupMenuBar];
     [self setupNavBarButton];
+}
+
+- (void)setupCollectionView {
+    self.collectionView.backgroundColor = [UIColor whiteColor];
     
-    [Video fetchVideosWithCompletionHandler:^(NSArray *videos) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.videos = videos;
-            [self.collectionView reloadData];
-        });
-        
-    }];
+    [self.collectionView registerClass:[FeedCell class] forCellWithReuseIdentifier:@"FeedCell"];
+    [self.collectionView registerClass:[TrendingCell class] forCellWithReuseIdentifier:@"TrendingCell"];
+    [self.collectionView registerClass:[SubscriptionCell class] forCellWithReuseIdentifier:@"SubscriptionCell"];
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
+    self.collectionView.pagingEnabled = YES;
+    self.collectionView.showsHorizontalScrollIndicator = NO;
+    self.collectionView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
+    self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0);
 }
 
 - (void)setupMenuBar {
     self.navigationController.hidesBarsOnSwipe = YES;
-
+    
     UIView *redView = [[UIView alloc] init];
     redView.backgroundColor = [UIColor colorWithRed:230.0/255.0 green:32.0/255.0 blue:31.0/255.0 alpha:1];
     redView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -84,13 +85,21 @@
 }
 
 - (void)handleSearch {
-    NSLog(@"%@", @"touching search button");
+    [self scrollToMenuIndex:2];
 }
 
 - (void)handleMore {
     
     [self.settingLauncher showSettingMenu];
     
+}
+
+- (void)scrollToMenuIndex:(NSInteger)menuIndex {
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:menuIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+    
+    //change title
+    UILabel *titleLable = (UILabel *)self.navigationItem.titleView;
+    titleLable.text = self.titles[menuIndex];
 }
 
 - (void)showControllerForSetting:(Setting *)setting {
@@ -102,26 +111,48 @@
     [self.navigationController pushViewController:settingViewController animated:true];
 }
 
-
+#pragma mark - Datasources and delegates
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.videos.count;
+    return 4;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    VideoCollectionViewCell *cell = (VideoCollectionViewCell *)[self.collectionView dequeueReusableCellWithReuseIdentifier:@"cellID" forIndexPath:indexPath];
+    switch (indexPath.item) {
+        case 1:
+            return [self.collectionView dequeueReusableCellWithReuseIdentifier:@"TrendingCell" forIndexPath:indexPath];
+            break;
+        case 2:
+            return [self.collectionView dequeueReusableCellWithReuseIdentifier:@"SubscriptionCell" forIndexPath:indexPath];
+            break;
+            
+        default:
+            break;
+    }
     
-    cell.video = self.videos[indexPath.item];
+    UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"FeedCell" forIndexPath:indexPath];
     
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    float height = (self.view.frame.size.width - 32) * 9.0 / 16.0 + 88;
-    return CGSizeMake(self.view.frame.size.width, height);
+    return CGSizeMake(self.view.frame.size.width, self.view.frame.size.height - 50);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 0;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    self.menuBar.horizontalBarLeftAnchorConstraint.constant = scrollView.contentOffset.x / 4;
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    NSInteger index = targetContentOffset->x / self.view.frame.size.width;
+    [self.menuBar.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+    
+    //change title
+    UILabel *titleLable = (UILabel *)self.navigationItem.titleView;
+    titleLable.text = self.titles[index];
 }
 
 #pragma mark - Getter
@@ -130,15 +161,9 @@
     if (!_menuBar) {
         _menuBar = [[MenuBar alloc] init];
         _menuBar.translatesAutoresizingMaskIntoConstraints = NO;
+        _menuBar.homeScreenController = self;
     }
     return _menuBar;
-}
-
-- (NSArray *)videos {
-    if (!_videos) {
-        _videos = [[NSArray alloc] init];
-    }
-    return _videos;
 }
 
 - (SettingLauncher *)settingLauncher {
@@ -146,6 +171,14 @@
     _settingLauncher.homeScreenController = self;
     return _settingLauncher;
 }
+
+- (NSArray *)titles {
+    if (!_titles) {
+        _titles = @[@"Home", @"Trending", @"Subscriptions", @"Account"];
+    }
+    return _titles;
+}
+
 
 #pragma mark - Setter
 
