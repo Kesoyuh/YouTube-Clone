@@ -8,6 +8,7 @@
 
 #import "FeedCell.h"
 #import "VideoCollectionViewCell.h"
+#import "VideoLauncher.h"
 
 @interface FeedCell ()
 
@@ -75,6 +76,11 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 0;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    VideoLauncher *videoLauncher = [[VideoLauncher alloc] init];
+    [videoLauncher showVideoPlayer];
 }
 
 #pragma mark - Getter

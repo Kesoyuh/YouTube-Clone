@@ -27,6 +27,8 @@
 		BF4248A11E5BC8750016D8E9 /* FeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4248A01E5BC8750016D8E9 /* FeedCell.m */; };
 		BF4248A61E5BEC200016D8E9 /* TrendingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4248A51E5BEC200016D8E9 /* TrendingCell.m */; };
 		BF4248A91E5BF8400016D8E9 /* SubscriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4248A81E5BF8400016D8E9 /* SubscriptionCell.m */; };
+		BF4248AC1E5CF8560016D8E9 /* VideoLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4248AB1E5CF8560016D8E9 /* VideoLauncher.m */; };
+		BF4248AF1E5CFC5D0016D8E9 /* VideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4248AE1E5CFC5D0016D8E9 /* VideoPlayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,10 @@
 		BF4248A51E5BEC200016D8E9 /* TrendingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrendingCell.m; path = View/TrendingCell.m; sourceTree = "<group>"; };
 		BF4248A71E5BF8400016D8E9 /* SubscriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubscriptionCell.h; path = View/SubscriptionCell.h; sourceTree = "<group>"; };
 		BF4248A81E5BF8400016D8E9 /* SubscriptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubscriptionCell.m; path = View/SubscriptionCell.m; sourceTree = "<group>"; };
+		BF4248AA1E5CF8560016D8E9 /* VideoLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoLauncher.h; path = Controller/VideoLauncher.h; sourceTree = "<group>"; };
+		BF4248AB1E5CF8560016D8E9 /* VideoLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoLauncher.m; path = Controller/VideoLauncher.m; sourceTree = "<group>"; };
+		BF4248AD1E5CFC5D0016D8E9 /* VideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoPlayer.h; path = View/VideoPlayer.h; sourceTree = "<group>"; };
+		BF4248AE1E5CFC5D0016D8E9 /* VideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoPlayer.m; path = View/VideoPlayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +152,8 @@
 				BF4248A51E5BEC200016D8E9 /* TrendingCell.m */,
 				BF4248A71E5BF8400016D8E9 /* SubscriptionCell.h */,
 				BF4248A81E5BF8400016D8E9 /* SubscriptionCell.m */,
+				BF4248AD1E5CFC5D0016D8E9 /* VideoPlayer.h */,
+				BF4248AE1E5CFC5D0016D8E9 /* VideoPlayer.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -157,6 +165,8 @@
 				0C4E02641E503156007F970A /* HomeScreenController.m */,
 				BF2F13491E55483E0057F8FF /* SettingLauncher.h */,
 				BF2F134A1E55483E0057F8FF /* SettingLauncher.m */,
+				BF4248AA1E5CF8560016D8E9 /* VideoLauncher.h */,
+				BF4248AB1E5CF8560016D8E9 /* VideoLauncher.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -371,6 +381,7 @@
 				BF4248A61E5BEC200016D8E9 /* TrendingCell.m in Sources */,
 				BF4248A11E5BC8750016D8E9 /* FeedCell.m in Sources */,
 				BF2F13511E5570D00057F8FF /* Setting.m in Sources */,
+				BF4248AC1E5CF8560016D8E9 /* VideoLauncher.m in Sources */,
 				0CD7058A1E45F604001E06C6 /* AppDelegate.m in Sources */,
 				0C4E02681E503408007F970A /* MenuBar.m in Sources */,
 				BF2F134E1E5564420057F8FF /* SettingCell.m in Sources */,
@@ -378,6 +389,7 @@
 				0C4E02601E4FF524007F970A /* VideoCollectionViewCell.m in Sources */,
 				BF2F13481E551EA80057F8FF /* CustomImageView.m in Sources */,
 				0C4E02651E503156007F970A /* HomeScreenController.m in Sources */,
+				BF4248AF1E5CFC5D0016D8E9 /* VideoPlayer.m in Sources */,
 				0C2A94CA1E5069230099A8F5 /* Channel.m in Sources */,
 				BF2F134B1E55483E0057F8FF /* SettingLauncher.m in Sources */,
 				0CD705871E45F604001E06C6 /* main.m in Sources */,
